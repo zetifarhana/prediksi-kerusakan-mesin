@@ -5,7 +5,7 @@ import os
 import numpy as np
 import altair as alt
 
-model = pickle.load(open('model_prediksi_kerusakan.sav', 'rb'))
+model = pickle.load(open('model_prediksi_kerusakan_logreg.sav', 'rb'))
 
 st.title('Prediksi Kerusakan Mesin')
 
@@ -13,8 +13,6 @@ st.header("Dataset")
 #open file csv
 df1 = pd.read_csv('predictive_maintenance.csv')
 st.dataframe(df1)
-
-
 
 type = st.number_input('Type:', min_value=0)
 airtemperature = st.number_input('Air temperature:', min_value=0)
@@ -36,4 +34,4 @@ if st.button('Prediksi'):
     else:
         hasil = 'Ada kerusakan mesin'
 
-    st.write(hasil)
+    st.write('Hasil prediksi :', hasil)
