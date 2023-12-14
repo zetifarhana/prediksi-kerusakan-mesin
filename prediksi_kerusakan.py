@@ -5,7 +5,7 @@ import os
 import numpy as np
 import altair as alt
 
-model = pickle.load(open('model_prediksi_kerusakan_logreg.sav', 'rb'))
+model = pickle.load(open('model_prediksi_kerusakan_logreg_failtype.sav', 'rb'))
 
 st.title('Prediksi Kerusakan Mesin')
 
