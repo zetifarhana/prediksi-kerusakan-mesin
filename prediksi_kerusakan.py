@@ -29,9 +29,15 @@ if st.button('Prediksi'):
     #hasil_float = float(hasil_str[0][0])
     #hasil_formatted = f'Hasil Prediksi Kerusakan: {hasil_float:,.2f}'
 
-    if car_prediction == 0:
-        hasil = 'Tidak ada kerusakan mesin'
-    else:
-        hasil = 'Ada kerusakan mesin'
+    if car_prediction == 1:
+        hasil = "No Failure"
+    elif car_prediction == 2:
+        hasil = "Heat Dissipation Failure"
+    elif car_prediction == 3:
+        hasil = "Power Failure"
+    elif car_prediction == 4:
+        hasil = "Overstrain Failure"
+    elif car_prediction == 5:
+        hasil = "Tool Wear Failure"
 
     st.write('Hasil prediksi :', hasil)
