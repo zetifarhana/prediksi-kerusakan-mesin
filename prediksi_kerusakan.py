@@ -9,35 +9,79 @@ model = pickle.load(open('model_prediksi_kerusakan_logreg_failtype.sav', 'rb'))
 
 st.title('Prediksi Kerusakan Mesin')
 
-st.header("Dataset")
 #open file csv
 df1 = pd.read_csv('predictive_maintenance.csv')
-st.dataframe(df1)
 
-type = st.number_input('Type:', min_value=0)
-airtemperature = st.number_input('Air temperature:', min_value=0)
-processtemperature = st.number_input('Process temperature:', min_value=0)
-rotationalspeed = st.number_input('Rotational speed:', min_value=0)
-torque = st.number_input('Torque:', min_value=0)
-toolwear = st.number_input('Tool wear:', min_value=0)
+# Fungsi untuk halaman Deskripsi
+def show_deskripsi():
+    st.header("Deskripsi")
 
-if st.button('Prediksi'):
-    car_prediction = model.predict([[type, airtemperature, processtemperature, rotationalspeed, torque, toolwear]])
-    
-    # convert float to string
-    #hasil_str = np.array(car_prediction)
-    #hasil_float = float(hasil_str[0][0])
-    #hasil_formatted = f'Hasil Prediksi Kerusakan: {hasil_float:,.2f}'
 
-    if car_prediction == 1:
-        hasil = "No Failure"
-    elif car_prediction == 2:
-        hasil = "Heat Dissipation Failure"
-    elif car_prediction == 3:
-        hasil = "Power Failure"
-    elif car_prediction == 4:
-        hasil = "Overstrain Failure"
-    elif car_prediction == 5:
-        hasil = "Tool Wear Failure"
+# Fungsi untuk halaman Dataset
+def show_dataset():
+    st.header("Dataset")
+    st.dataframe(df1)
 
-    st.write('Hasil prediksi :', hasil)
+# Fungsi untuk halaman Grafik
+def show_grafik():
+    st.header("Grafik")
+
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Air Temperature", "Process Temperature", "Rotational Speed", "Torque", "Tool Wear"])
+
+    with tab1:
+        st.write("Grafik Air Temperature")
+        chart_airtemperature = pd.DataFrame(df1, columns=["Air temperature"])
+        st.line_chart(chart_airtemperature)
+    with tab2:
+        st.write("Grafik Process Temperature")
+        chart_processtemperature = pd.DataFrame(df1, columns=["Process temperature"])
+        st.line_chart(chart_processtemperature)
+    with tab3:
+        st.write("Grafik Rotational Speed")
+        chart_rotationalspeed = pd.DataFrame(df1, columns=["Rotational speed"])
+        st.line_chart(chart_rotationalspeed)
+    with tab4:
+        st.write("Grafik Torque")
+        chart_torque = pd.DataFrame(df1, columns=["Torque"])
+        st.line_chart(chart_torque)
+    with tab5:
+        st.write("Grafik Toolwear")
+        chart_toolwear = pd.DataFrame(df1, columns=["Tool wear"])
+        st.line_chart(chart_toolwear)
+
+def show_prediksi():
+    st.header("Prediksi")
+    type = st.slider('Type', 1, 3, 2)
+    airtemperature = st.slider('Air temperature:', 295.3, 304.5, 300.0)
+    processtemperature = st.slider('Process temperature:', 305.7, 313.8, 310.1)
+    rotationalspeed = st.slider('Rotational speed:', 1168, 2886, 1503)
+    torque = st.slider('Torque:', 3.8, 76.6, 40.1)
+    toolwear = st.slider('Tool wear:', 0, 253, 108)
+
+    if st.button('Prediksi'):
+        car_prediction = model.predict([[type, airtemperature, processtemperature, rotationalspeed, torque, toolwear]])
+        if car_prediction == 1:
+            hasil = "No Failure"
+        elif car_prediction == 2:
+            hasil = "Heat Dissipation Failure"
+        elif car_prediction == 3:
+            hasil = "Power Failure"
+        elif car_prediction == 4:
+            hasil = "Overstrain Failure"
+        elif car_prediction == 5:
+            hasil = "Tool Wear Failure"
+        st.write('Hasil prediksi :', hasil)
+
+add_selectbox = st.sidebar.selectbox(
+    "PILIH MENU",
+    ("Deskripsi", "Dataset", "Grafik", "Prediksi")
+)
+
+if add_selectbox == "Deskripsi":
+    show_deskripsi()
+elif add_selectbox == "Dataset":
+    show_dataset()
+elif add_selectbox == "Grafik":
+    show_grafik()
+elif add_selectbox == "Prediksi":
+    show_prediksi()
