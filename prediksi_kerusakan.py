@@ -51,6 +51,7 @@ def show_grafik():
 
 def show_prediksi():
     st.header("Prediksi")
+    st.write("Tentukan nilai-nilai pada variabel berikut untuk menentukan jenis kerusakan yang dialami oleh mesin:")
     type = st.slider('Type', 1, 3, 2)
     airtemperature = st.slider('Air temperature:', 295.3, 304.5, 300.0)
     processtemperature = st.slider('Process temperature:', 305.7, 313.8, 310.1)
