@@ -16,11 +16,37 @@ df1 = pd.read_csv('predictive_maintenance.csv')
 def show_deskripsi():
     st.write("Selamat datang di aplikasi prediksi kerusakan mesin berbasis web.")
     st.write("Aplikasi ini menggunakan teknologi machine learning untuk memberikan prediksi yang akurat terkait kemungkinan kerusakan mesin berdasarkan beberapa variabel kunci. Dengan memasukkan nilai-nilai seperti Type, Air Temperature, Process Temperature, Rotational Speed, Torque, dan Tool Wear, pengguna dapat dengan mudah mendapatkan perkiraan tingkat risiko kerusakan mesin. Model machine learning yang kuat di balik aplikasi ini telah dilatih menggunakan data historis yang luas yakni sejumlah kurang lebih 10.000 data, memungkinkan sistem memberikan prediksi yang handal. Aplikasi ini dirancang untuk membantu pengguna mengidentifikasi potensi masalah sebelum terjadinya kerusakan serius, memungkinkan perencanaan pemeliharaan yang lebih efisien dan pengoperasian mesin yang lebih handal. Sederhana, responsif, dan mudah digunakan, aplikasi ini menjadi mitra ideal dalam mengoptimalkan kinerja dan umur pakai mesin industri Anda.")
+    st.write("Sumber data: https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset")
 
 # Fungsi untuk halaman Dataset
 def show_dataset():
     st.header("Dataset")
     st.dataframe(df1)
+    st.markdown("""
+( 1 ) **Type**
+   - Terdiri dari kode L, M, H, untuk Low (50% dari seluruh produk), Medium (30%), dan High (20%).
+   - Sebagai varian kualitas produk dan nomor seri khusus varian.
+  \n(
+2 ) **Air Temperature (Suhu Udara)**
+   - Suhu udara adalah suhu sekitar mesin atau peralatan.
+   - Suhu udara yang ekstrem dapat memengaruhi suhu mesin dan kinerja komponen.
+  \n(
+3 ) **Process Temperature (Suhu Proses)**
+   - Merupakan suhu yang diukur dalam proses produksi atau operasional mesin.
+   - Suhu proses di luar rentang yang diinginkan dapat mempengaruhi kualitas produk dan merusak komponen mesin.
+  \n(
+4 ) **Rotational Speed (Kecepatan Putaran)**
+   - Kecepatan putaran adalah kecepatan dimana mesin atau bagian mesin berputar.
+   - Kecepatan putaran yang ekstrem dapat menyebabkan keausan, getaran, atau kegagalan komponen.
+  \n(
+5 ) **Torque (Torsi)**
+   - Torsi adalah gaya yang dapat memutar objek sekitar sumbu putar.
+   - Torsi berlebihan atau tidak memadai dapat mempengaruhi kinerja mesin dan menyebabkan kerusakan.
+  \n(
+6 ) **Tool Wear (Keausan Alat)**
+   - Keausan alat merujuk pada penggunaan berlebihan atau penurunan kualitas alat pemotong atau alat lainnya.
+   - Keausan alat yang berlebihan dapat mempengaruhi hasil produksi, memerlukan pemeliharaan lebih sering, dan dapat merusak bagian-bagian mesin.
+""")
 
 # Fungsi untuk halaman Grafik
 def show_grafik():
