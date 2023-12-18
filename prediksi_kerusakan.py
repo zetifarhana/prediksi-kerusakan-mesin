@@ -17,6 +17,7 @@ def show_deskripsi():
     st.write("Selamat datang di aplikasi prediksi kerusakan mesin berbasis web.")
     st.write("<div style='text-align: justify;'>Aplikasi ini menggunakan teknologi <i>Machine Learning</i> untuk memberikan prediksi yang akurat terkait kemungkinan kerusakan mesin berdasarkan beberapa variabel kunci. Dengan memasukkan nilai-nilai seperti Type, Air Temperature, Process Temperature, Rotational Speed, Torque, dan Tool Wear, pengguna dapat dengan mudah mendapatkan perkiraan tingkat risiko kerusakan mesin. Model <i>Machine Learning</i> yang kuat di balik aplikasi ini telah dilatih menggunakan data historis yang luas yakni sejumlah kurang lebih 10.000 data, memungkinkan sistem memberikan prediksi yang handal. Aplikasi ini dirancang untuk membantu pengguna mengidentifikasi potensi masalah sebelum terjadinya kerusakan serius, memungkinkan perencanaan pemeliharaan yang lebih efisien dan pengoperasian mesin yang lebih handal. Sederhana, responsif, dan mudah digunakan, aplikasi ini menjadi mitra ideal dalam mengoptimalkan kinerja dan umur pakai mesin industri.</div>", unsafe_allow_html=True)
     st.write("Sumber data: https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset")
+    st.write("Dibuat oleh Tim Prodi D3 Teknologi Informasi PNM - 2023")
 
 # Fungsi untuk halaman Dataset
 def show_dataset():
