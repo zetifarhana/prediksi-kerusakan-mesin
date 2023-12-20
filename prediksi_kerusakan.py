@@ -7,15 +7,15 @@ import altair as alt
 
 model = pickle.load(open('model_prediksi_kerusakan_logreg_failtype.sav', 'rb'))
 
-st.title('Prediksi Kerusakan Mesin')
+st.title('Prediksi Kegagalan Mesin')
 
 #open file csv
 df1 = pd.read_csv('predictive_maintenance.csv')
 
 # Fungsi untuk halaman Deskripsi
 def show_deskripsi():
-    st.write("Selamat datang di aplikasi prediksi kerusakan mesin berbasis web.")
-    st.write("<div style='text-align: justify;'>Aplikasi ini menggunakan teknologi <i>Machine Learning</i> untuk memberikan prediksi yang akurat terkait kemungkinan kerusakan mesin berdasarkan beberapa variabel kunci. Dengan memasukkan nilai-nilai seperti Type, Air Temperature, Process Temperature, Rotational Speed, Torque, dan Tool Wear, pengguna dapat dengan mudah mendapatkan perkiraan tingkat risiko kerusakan mesin. Model <i>Machine Learning</i> yang kuat di balik aplikasi ini telah dilatih menggunakan data historis yang luas yakni sejumlah kurang lebih 10.000 data, memungkinkan sistem memberikan prediksi yang handal. Aplikasi ini dirancang untuk membantu pengguna mengidentifikasi potensi masalah sebelum terjadinya kerusakan serius, memungkinkan perencanaan pemeliharaan yang lebih efisien dan pengoperasian mesin yang lebih handal. Sederhana, responsif, dan mudah digunakan, aplikasi ini menjadi mitra ideal dalam mengoptimalkan kinerja dan umur pakai mesin industri.</div>", unsafe_allow_html=True)
+    st.write("Selamat datang di aplikasi prediksi kegagalan mesin berbasis web.")
+    st.write("<div style='text-align: justify;'>Aplikasi ini menggunakan teknologi <i>Machine Learning</i> untuk memberikan prediksi yang akurat terkait kemungkinan kegagalan mesin berdasarkan beberapa variabel kunci. Dengan memasukkan nilai-nilai seperti Type, Air Temperature, Process Temperature, Rotational Speed, Torque, dan Tool Wear, pengguna dapat dengan mudah mendapatkan perkiraan tingkat risiko kegagalan pada mesin. Model <i>Machine Learning</i> yang kuat di balik aplikasi ini telah dilatih menggunakan data historis yang luas yakni sejumlah kurang lebih 10.000 data, memungkinkan sistem memberikan prediksi yang handal. Aplikasi ini dirancang untuk membantu pengguna mengidentifikasi potensi masalah sebelum terjadinya kerusakan serius, memungkinkan perencanaan pemeliharaan yang lebih efisien dan pengoperasian mesin yang lebih handal. Sederhana, responsif, dan mudah digunakan, aplikasi ini menjadi mitra ideal dalam mengoptimalkan kinerja dan umur pakai mesin industri.</div>", unsafe_allow_html=True)
     st.write("Sumber data: https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset")
     st.write("Dibuat oleh Tim Prodi D3 Teknologi Informasi PNM - 2023")
 
@@ -42,7 +42,7 @@ def show_dataset():
   \n(
 5 ) **Torque (Torsi)**
    - Torsi adalah gaya yang dapat memutar objek sekitar sumbu putar.
-   - Torsi berlebihan atau tidak memadai dapat mempengaruhi kinerja mesin dan menyebabkan kerusakan.
+   - Torsi berlebihan atau tidak memadai dapat mempengaruhi kinerja mesin dan menyebabkan kegagalan.
   \n(
 6 ) **Tool Wear (Keausan Alat)**
    - Keausan alat merujuk pada penggunaan berlebihan atau penurunan kualitas alat pemotong atau alat lainnya.
@@ -78,7 +78,7 @@ def show_grafik():
 
 def show_prediksi():
     st.header("Prediksi")
-    st.write("Tentukan nilai-nilai pada variabel berikut untuk menentukan jenis kerusakan yang dialami oleh mesin:")
+    st.write("Tentukan nilai-nilai pada variabel berikut untuk menentukan jenis kegagalan yang dialami oleh mesin:")
     type = st.slider('Type', 1, 3, 2)
     airtemperature = st.slider('Air temperature:', 295.3, 304.5, 300.0)
     processtemperature = st.slider('Process temperature:', 305.7, 313.8, 310.1)
